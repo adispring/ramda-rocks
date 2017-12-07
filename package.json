@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/adispring/ramda-rocks/issues"
   },
-  "homepage": "https://github.com/adispring/ramda-rocks#readme"
+  "homepage": "https://github.com/adispring/ramda-rocks#readme",
+  "dependencies": {
+    "expect": "^21.2.1",
+    "ramda": "^0.25.0"
+  }
 }
