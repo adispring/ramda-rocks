@@ -1,3 +1,16 @@
+mapFilter(array1);
+mapFilter(array2);
+
+askldfjalsdfjas
+
+const mapFilter = compose(filter, map(...));
+
+const isLastInStock = R.compose(
+  R.prop('in_stock'),
+  R.last
+)
+
+
 var CARS = [{
   name: 'Volkswagen',
   model: 'Beetle',
@@ -105,10 +118,52 @@ var CARS = [{
 var R = require('ramda');
 var expect = require('expect');
 
-var group = R.compose(
-  R.groupBy(R.prop('origin')),
-  R.map(R.pick(['name', 'model', 'origin']))
+var renameKeys = R.curry((keysMap, obj) =>
+  R.reduce((acc, key) => R.assoc(keysMap[key] || key, obj[key], acc), {}, R.keys(obj))
 );
+
+
+var groupByOrigin = R.compose(
+  R.map(renameKeys({name: 'label', model: 'value'})),
+  R.tap(console.log),
+  R.map(R.pick(['name', 'model']))
+)
+
+groupByOrigin(CARS)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var isLastInStock = R.compose(
+  R.prop('in_stock'),
+  R.tap(console.log),
+  R.last
+);
+
+isLastInStock(CARS);
+
+
+var group = R.compose(
+  R.map(renameKeys({name: 'label', model: 'value'})),
+  R.map(R.pick(['name', 'model']))
+);
+
+group(CARS);
 
 var sort = R.compose(
   R.sortBy(R.prop('horsepower')),
@@ -130,3 +185,53 @@ var isLastInStockFP = R.compose(
 var dataProcess = isLastInStockFP;
 
 dataProcess(CARS);
+
+
+array1.map(...).filter(...);
+
+const mapFilter = compose(filter, map(...));
+
+mapFilter(array1);
+mapFilter(array2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const isLastInStock = R.compose(
+  R.prop('in_stock'),
+  R.last
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
